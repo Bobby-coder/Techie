@@ -1,0 +1,26 @@
+async function registerUser() {
+    try {
+      const activationToken = tokenState.token;
+
+      const { data } = await axios.post(
+        import.meta.env.VITE_SERVER_DOMAIN + "/activate",
+        { activationCode: otp, activationToken }
+      );
+
+      return Promise.resolve(data.message);
+    } catch ({ response }) {
+      return Promise.reject(response.data.message);
+    }
+  }
+
+  async function handleSubmit(){
+    let registerPromise = registerUser()
+
+    toast.promise(registerPromise, {
+      loading: 'Creating...',
+      success : <b>Register Successfully...!</b>,
+      error : <b>Could not Register.</b>
+    });
+
+    registerPromise.then(function(){ navigate('/signin')});
+  }
