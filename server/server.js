@@ -26,7 +26,7 @@ server.use(express.json()); // enable JSON sharing
 server.use(cors());
 
 // routes
-server.use(userRouter, blogRouter, notificationRouter)
+server.use("/api/v1", userRouter, blogRouter, notificationRouter)
 
 // Test route
 server.get("/test", (req, res, next) => {
