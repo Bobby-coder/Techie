@@ -24,10 +24,7 @@ server.listen(process.env.PORT, () => {
 // middlewares
 server.use(express.json()); // enable JSON sharing
 server.use(
-  cors({
-    origin: ["https://techie-blogs.vercel.app"],
-    credentials: true,
-  })
+  cors()
 );
 
 // routes
