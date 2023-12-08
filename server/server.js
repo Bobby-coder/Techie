@@ -25,8 +25,9 @@ server.listen(process.env.PORT, () => {
 server.use(express.json()); // enable JSON sharing
 server.use(
   cors({
+    methods: "GET,POST,PATCH,DELETE,OPTIONS",
+    origin: ["https://techie-blogs.vercel.app"],
     credentials: true,
-    origin: "https://techie-blogs.vercel.app",
   })
 );
 
