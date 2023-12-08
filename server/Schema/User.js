@@ -145,23 +145,4 @@ const userSchema = Schema(
   next();
 }); */
 
-// sign access token
-userSchema.methods.signInAccessToken = function () {
-  return jwt.sign({ id: this._id }, process.env.ACCESS_TOKEN || "", {
-    expiresIn: "5m",
-  });
-};
-
-// sign refresh token
-userSchema.methods.signInRefreshToken = function () {
-  return jwt.sign({ id: this._id }, process.env.REFRESH_TOKEN || "", {
-    expiresIn: "3d",
-  });
-};
-
-// compare password
-userSchema.methods.comparePassword = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.personal_info.password);
-};
-
 export default mongoose.model("users", userSchema);
