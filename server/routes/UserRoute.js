@@ -16,7 +16,7 @@ import { verifyJWT } from "../middleware/auth.js";
 
 const userRouter = express.Router();
 
-userRouter.get("/get-upload-url", getUploadUrl);
+userRouter.get("/get-upload-url", verifyJWT, getUploadUrl);
 
 userRouter.post("/signup", registerUser);
 
@@ -34,7 +34,7 @@ userRouter.post("/update-profile-img", verifyJWT, updateProfileImage);
 
 userRouter.post("/update-profile", verifyJWT, updateProfile);
 
-userRouter.get("/get-profile/:id", getProfile);
+userRouter.get("/get-profile/:id", verifyJWT, getProfile);
 
 userRouter.post("/change-password", verifyJWT, changePassword);
 
