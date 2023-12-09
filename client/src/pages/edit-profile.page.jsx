@@ -41,9 +41,10 @@ const EditProfile = () => {
   useLayoutEffect(() => {
     if (access_token) {
       axios
-        .get(import.meta.env.VITE_SERVER_DOMAIN + "/get-profile", {
-          username: userAuth.username,
-        })
+        .get(
+          import.meta.env.VITE_SERVER_DOMAIN +
+            `/get-profile/${userAuth.username}`
+        )
         .then(({ data }) => {
           setFormData({
             fullname: data.personal_info.fullname,
