@@ -16,7 +16,7 @@ import { verifyJWT } from "../middleware/auth.js";
 
 const userRouter = express.Router();
 
-userRouter.get("/get-upload-url", verifyJWT, getUploadUrl);
+userRouter.get("/get-upload-url", getUploadUrl);
 
 userRouter.post("/signup", registerUser);
 
