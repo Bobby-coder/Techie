@@ -34,7 +34,7 @@ userRouter.post("/update-profile-img", verifyJWT, updateProfileImage);
 
 userRouter.post("/update-profile", verifyJWT, updateProfile);
 
-userRouter.get("/get-profile/:id", verifyJWT, getProfile);
+userRouter.get("/get-profile/:id", getProfile);
 
 userRouter.post("/change-password", verifyJWT, changePassword);
 
