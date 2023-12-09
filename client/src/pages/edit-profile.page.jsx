@@ -41,7 +41,7 @@ const EditProfile = () => {
   useLayoutEffect(() => {
     if (access_token) {
       axios
-        .post(import.meta.env.VITE_SERVER_DOMAIN + "/get-profile", {
+        .get(import.meta.env.VITE_SERVER_DOMAIN + "/get-profile", {
           username: userAuth.username,
         })
         .then(({ data }) => {
