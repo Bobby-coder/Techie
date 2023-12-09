@@ -67,7 +67,7 @@ const ChangePassword = () => {
     } catch ({ response }) {
       toast.dismiss(loadingToast);
       e.target.removeAttribute("disabled");
-      return toast.error(response.data.error);
+      return toast.error(response.data.message);
     }
   };
 

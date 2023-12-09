@@ -63,7 +63,7 @@ const EditProfile = () => {
           setLoading(false);
         })
         .catch(({ response }) => {
-          return toast.error(response.data.error);
+          return toast.error(response.data.message);
         });
     }
   }, [access_token]);
@@ -136,7 +136,7 @@ const EditProfile = () => {
         } catch ({ response }) {
           toast.dismiss(loadingToast);
           e.target.removeAttribute("disabled");
-          toast.error(response.data.error);
+          toast.error(response.data.message);
         }
       }
     }
@@ -201,7 +201,7 @@ const EditProfile = () => {
 
       e.target.removeAttribute("disabled");
 
-      toast.error(response.data.error);
+      toast.error(response.data.message);
     }
   };
 

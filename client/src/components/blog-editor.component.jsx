@@ -150,7 +150,7 @@ const BlogEditor = () => {
           e.target.classList.remove("disable");
 
           toast.dismiss(loadingToast);
-          return toast.error(response.data.error);
+          return toast.error(response.data.message);
         }
       });
     }

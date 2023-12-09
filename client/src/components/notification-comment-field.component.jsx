@@ -52,7 +52,7 @@ const NotificationCommentField = ({
       results[index].reply = { comment, _id: data._id };
       setNotifications({ ...notifications, results });
     } catch ({ response }) {
-      return toast.error(response.data.error);
+      return toast.error(response.data.message);
     }
   };
 

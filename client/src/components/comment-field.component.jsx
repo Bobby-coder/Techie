@@ -92,7 +92,7 @@ const CommentField = ({
       setTotalParentCommentsLoaded((preVal) => preVal + 1);
     } catch (data) {
       console.log(data);
-      return toast.error(data.response.data.error);
+      return toast.error(data.response.data.message);
     }
   };
 
