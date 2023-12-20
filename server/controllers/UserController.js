@@ -517,13 +517,13 @@ export const changePassword = async (req, res, next) => {
       });
     }
 
-    const result = bcrypt.compare(currentPassword, user.personal_info.password);
+    const result = await bcrypt.compare(currentPassword, user.personal_info.password);
 
     if (!result) {
       return res.status(403).json({ error: "Incorrect current password" });
     }
 
-    const hashed_password = bcrypt.hash(newPassword, 10);
+    const hashed_password = await bcrypt.hash(newPassword, 10);
     await User.findOneAndUpdate(
       { _id: req.user },
       { "personal_info.password": hashed_password }
