@@ -497,10 +497,7 @@ export const changePassword = async (req, res, next) => {
     !passwordRegex.test(currentPassword) ||
     !passwordRegex.test(newPassword)
   ) {
-    return res.status(403).json({
-      error:
-        "Password should be 6 to 20 characters long with at least 1 numeric, 1 lowercase and 1 uppercase letter",
-    });
+    return next(new ErrorHandler( "Password should be 6 to 20 characters long with at least 1 numeric, 1 lowercase and 1 uppercase letter", 403));
   }
 
   try {
@@ -511,16 +508,13 @@ export const changePassword = async (req, res, next) => {
     }
 
     if (user.google_auth) {
-      return res.status(500).json({
-        error:
-          "You can't change account's password because you logged in through google",
-      });
+      return next(new ErrorHandler("You can't change account's password because you logged in through google", 500));
     }
 
     const result = await bcrypt.compare(currentPassword, user.personal_info.password);
 
     if (!result) {
-      return res.status(403).json({ error: "Incorrect current password" });
+      return next(new ErrorHandler("Incorrect current password", 403));
     }
 
     const hashed_password = await bcrypt.hash(newPassword, 10);
